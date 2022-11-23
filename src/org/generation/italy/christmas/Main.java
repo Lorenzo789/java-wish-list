@@ -24,6 +24,7 @@ public class Main {
 		
 		System.out.print("You wanna add something to the wishlist? y/n ");
 		String continued = sc.nextLine();
+		System.out.println("|-----------------------------------------------------|");
 		
 		if (continued.equals("y")) {
 			
@@ -33,26 +34,30 @@ public class Main {
 				
 				System.out.print("Insert a new wish for your wishlist ");
 				String newWish = sc.nextLine();
+				System.out.println("|-----------------------------------------------------|");
 				
 				wishList.add(newWish);
 				System.out.println("Your WishList contain: " + wishList.size() + " element");
+				System.out.println("|-----------------------------------------------------|");
 				
 				System.out.print("You wanna add something to the wishlist? y/n ");
 				String continueAdd = sc.nextLine();
+				System.out.println("|-----------------------------------------------------|");
 				
 				if(continueAdd.equals("n")) {
 					hasContinued = false;
+					
+					for(String wish : wishList) {
+						System.out.println("This is your List ");
+						System.out.println("- " + wish);
+					}
 				}
 				
 			}
 			
-		} else if(continued.equals("n")) {
-			
-			hasContinued = false;
-			
 		}
 		
-		wishList.iter
+//		wishList.iter
 		
 	}
 	
