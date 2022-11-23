@@ -2,8 +2,15 @@ package org.generation.italy.christmas;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
+
+import javax.print.attribute.HashAttributeSet;
 
 public class Main {
 
@@ -20,14 +27,7 @@ public class Main {
 	 Parte 2
      Definire e applicare un Comparator<String> da applicare alla lista desideri
      che metta in ordine i desideri in funzione di quante volte vocali sono presenti nel desiderio (piu' vocali prima, meno vocali poi)
-
-	 ATTENZIONE! slegato dai regali di natale
-
-     Richiede all'utente una stringa e stampare ogni singolo carattere senza ripetizioni (ordinamento irrilevante)
-     BONUS: stampare i caratteri in ordine alfabetico
      
-     Richiedere all'utente una stringa e mappare ogni singolo carattere con la relativa frequenza con map 
-     BONUS: stampare i caratteri in ordine alfabetico
 	 */
 	
 	public static class StringComparator implements Comparator<String> {
@@ -89,7 +89,34 @@ public class Main {
 			
 		}
 		
-//		wishList.iter
+		/*
+		  	 ATTENZIONE! slegato dai regali di natale
+		  	 
+			 Richiede all'utente una stringa e stampare ogni singolo carattere senza ripetizioni (ordinamento irrilevante) con set
+	     	 
+	     	 Richiedere all'utente una stringa e mappare ogni singolo carattere con la relativa frequenza con map 
+	     	 
+     		 BONUS: stampare i caratteri in ordine alfabetico
+		 */
+			
+		Set<String> userSet = new HashSet<String>();
+		
+		Map<Integer, String> mapUserWord = new HashMap<Integer, String>();
+		
+		System.out.print("Write a word ");
+		String userString = sc.nextLine();
+		
+		for(int x = 0; x < userString.length(); x++) {
+			
+			String caracter = userString.charAt(x) + "";
+			
+			userSet.add(caracter);
+			
+			mapUserWord.put(x, caracter);
+		}
+		
+		System.out.println(userSet);
+		System.out.println(mapUserWord);
 		
 	}
 	
