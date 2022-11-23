@@ -1,6 +1,9 @@
 package org.generation.italy.christmas;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -14,9 +17,18 @@ public class Main {
 	 Al termine dell’inserimento ordinare la lista e stampare a video la lista ordinata.
 	 */
 	
+	public static class StringComparator implements Comparator<String> {
+		
+		@Override
+		public int compare(String o1, String o2) {
+			return o1.length() - o2.length();
+		}
+		
+	}
+	
 	public static void main(String[] args) {
 		
-		ArrayList<String> wishList = new ArrayList<String>();
+		List<String> wishList = new ArrayList<String>();
 		
 		Scanner sc = new Scanner(System.in);
 	
@@ -46,9 +58,11 @@ public class Main {
 				
 				if(continueAdd.equals("n")) {
 					hasContinued = false;
+					wishList.sort(new StringComparator());
+					System.out.println("This is your List ");
 					
 					for(String wish : wishList) {
-						System.out.println("This is your List ");
+						
 						System.out.println("- " + wish);
 					}
 				}
