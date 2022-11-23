@@ -4,13 +4,10 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
-
-import javax.print.attribute.HashAttributeSet;
 
 public class Main {
 
@@ -105,6 +102,7 @@ public class Main {
 		
 		System.out.print("Write a word ");
 		String userString = sc.nextLine();
+		sc.close();
 		
 		for(int x = 0; x < userString.length(); x++) {
 			
@@ -118,6 +116,16 @@ public class Main {
 		System.out.println(userSet);
 		System.out.println(mapUserWord);
 		
+		List<String> listUserSet = new ArrayList<String>();
+		
+		for(String setElements : userSet) {
+			
+			listUserSet.add(setElements);
+		}
+		
+		listUserSet.sort(null);
+		System.out.println(listUserSet);
+
 	}
 	
 }
