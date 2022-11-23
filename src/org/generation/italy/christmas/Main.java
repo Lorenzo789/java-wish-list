@@ -1,7 +1,6 @@
 package org.generation.italy.christmas;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
@@ -15,13 +14,32 @@ public class Main {
 	 Ad ogni iterazione mostrare la lunghezza della lista e chiedere all’utente se vuole continuare.
 	 Ad ogni iterazione aggiungere il desiderio alla lista.
 	 Al termine dell’inserimento ordinare la lista e stampare a video la lista ordinata.
+	 contare quante volte è presente ogni singolo caratter con map
+	 stampare ogni singolo carattere senza ripeterli con set
+	 
+	 Parte 2
+     Definire e applicare un Comparator<String> da applicare alla lista desideri
+     che metta in ordine i desideri in funzione di quante volte vocali sono presenti nel desiderio (piu' vocali prima, meno vocali poi)
+
+	 ATTENZIONE! slegato dai regali di natale
+
+     Richiede all'utente una stringa e stampare ogni singolo carattere senza ripetizioni (ordinamento irrilevante)
+     BONUS: stampare i caratteri in ordine alfabetico
+     
+     Richiedere all'utente una stringa e mappare ogni singolo carattere con la relativa frequenza con map 
+     BONUS: stampare i caratteri in ordine alfabetico
 	 */
 	
 	public static class StringComparator implements Comparator<String> {
 		
 		@Override
 		public int compare(String o1, String o2) {
-			return o1.length() - o2.length();
+			if(o1.contains("a,e,i,o,u")) {
+				return 1;
+			} else if(o2.contains("a,e,i,o,u")) {
+				return 1;
+			}
+			return -1;
 		}
 		
 	}
