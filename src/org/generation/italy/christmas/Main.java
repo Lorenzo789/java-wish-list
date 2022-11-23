@@ -1,6 +1,7 @@
 package org.generation.italy.christmas;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -31,12 +32,25 @@ public class Main {
 		
 		@Override
 		public int compare(String o1, String o2) {
-			if(o1.contains("a,e,i,o,u")) {
-				return 1;
-			} else if(o2.contains("a,e,i,o,u")) {
-				return 1;
+			return vocalCount(o2) - vocalCount(o1);
+		}
+		
+		private int vocalCount(String word) {
+			
+			List<Character> vocals = Arrays.asList(new Character[] {'a', 'e', 'i', 'o', 'u'});
+			
+			int vocalCounter = 0;
+			
+			for(Character c : word.toCharArray()) {
+				
+				c = Character.toLowerCase(c);
+				
+				if(vocals.contains(c)) {
+					vocalCounter++;
+				}
+				
 			}
-			return -1;
+			return vocalCounter;
 		}
 		
 	}
@@ -96,35 +110,50 @@ public class Main {
      		 BONUS: stampare i caratteri in ordine alfabetico
 		 */
 			
-		Set<String> userSet = new HashSet<String>();
-		
-		Map<Integer, String> mapUserWord = new HashMap<Integer, String>();
+		//set
+		Set<Character> userSet = new HashSet<Character>();
 		
 		System.out.print("Write a word ");
 		String userString = sc.nextLine();
 		sc.close();
 		
-		for(int x = 0; x < userString.length(); x++) {
+		for(Character letter : userString.toCharArray()) {
 			
-			String caracter = userString.charAt(x) + "";
-			
-			userSet.add(caracter);
-			
-			mapUserWord.put(x, caracter);
+			userSet.add(letter);
 		}
 		
 		System.out.println(userSet);
-		System.out.println(mapUserWord);
+		//set
 		
-		List<String> listUserSet = new ArrayList<String>();
+		//map
+		Map<Character, Integer> mapUserWord = new HashMap<Character, Integer>();
 		
-		for(String setElements : userSet) {
+		for(Character letter : userString.toCharArray()) {
 			
-			listUserSet.add(setElements);
+			if(mapUserWord.containsKey(letter)) {
+				
+				int oldMap = mapUserWord.get(letter);
+				mapUserWord.put(letter, oldMap + 1);
+				
+			} else {
+				
+				mapUserWord.put(letter, 1);
+			}
 		}
 		
-		listUserSet.sort(null);
-		System.out.println(listUserSet);
+		System.out.println(mapUserWord);
+		//map
+		
+		//bonus
+//		List<String> listUserSet = new ArrayList<String>();
+//		
+//		for(String setElements : userSet) {
+//			
+//			listUserSet.add(setElements);
+//		}
+//		
+//		listUserSet.sort(null);
+//		System.out.println(listUserSet);
 
 	}
 	
